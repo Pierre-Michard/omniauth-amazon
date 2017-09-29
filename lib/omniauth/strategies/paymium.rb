@@ -30,20 +30,13 @@ module OmniAuth
         client.auth_code.get_token(verifier, token_params)
       end
 
-      uid { raw_info['Profile']['CustomerId'] }
-
       info do
         {
-          'email' => raw_info['Profile']['PrimaryEmail'],
-          'name' => raw_info['Profile']['Name']
+          'email' => raw_info['email'],
+          'name' => raw_info['name']
         }
       end
 
-      extra do
-        {
-          'postal_code' => raw_info['Profile']['PostalCode']
-        }
-      end
 
       def raw_info
         access_token.options[:parse] = :json
@@ -53,7 +46,7 @@ module OmniAuth
         #
         #@raw_info ||= access_token.get('/ap/user/profile').parsed
 
-        url = "/api/v1/user/profile"
+        url = '/api/v1/user'
         params = {:params => { :access_token => access_token.token}}
         @raw_info ||= access_token.client.request(:get, url, params).parsed
       end
