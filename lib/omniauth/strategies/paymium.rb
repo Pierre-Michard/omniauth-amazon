@@ -3,13 +3,13 @@ require 'multi_json'
 
 module OmniAuth
   module Strategies
-    class Amazon < OmniAuth::Strategies::OAuth2
-      option :name, 'amazon'
+    class Paymium < OmniAuth::Strategies::OAuth2
+      option :name, 'paymium'
 
       option :client_options, {
-        :site => 'https://www.amazon.com/',
-        :authorize_url => 'https://www.amazon.com/ap/oa',
-        :token_url => 'https://api.amazon.com/auth/o2/token'
+        :site => 'https://www.paymium.com/',
+        :authorize_url => 'https://www.paymium.com/api/oauth/authorize',
+        :token_url => 'https://www.paymium.com/api/oauth/token'
       }
 
       option :access_token_options, {
@@ -53,7 +53,7 @@ module OmniAuth
         #
         #@raw_info ||= access_token.get('/ap/user/profile').parsed
 
-        url = "/ap/user/profile"
+        url = "/api/v1/user/profile"
         params = {:params => { :access_token => access_token.token}}
         @raw_info ||= access_token.client.request(:get, url, params).parsed
       end

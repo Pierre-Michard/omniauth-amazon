@@ -1,5 +1,5 @@
 module OmniAuth
-  module Amazon
+  module Paymium
     VERSION = "1.0.1"
   end
 end
