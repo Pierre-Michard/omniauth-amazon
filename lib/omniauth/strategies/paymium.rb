@@ -40,7 +40,7 @@ module OmniAuth
 
       def raw_info
         access_token.options[:parse] = :json
-        @raw_info ||= access_token.get("#{options.client_options.site}/api/user").parsed
+        @raw_info ||= access_token.get("#{options.client_options.site}/api/v1/user").parsed
       end
     end
   end
