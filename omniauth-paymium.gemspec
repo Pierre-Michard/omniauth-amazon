@@ -6,8 +6,8 @@ require 'omniauth/paymium/version'
 Gem::Specification.new do |spec|
   spec.name          = "omniauth-paymium"
   spec.version       = OmniAuth::Paymium::VERSION
-  spec.authors       = [""]
-  spec.email         = [""]
+  spec.authors       = ["Pierre Michard"]
+  spec.email         = ["pierre.michard@paymium.com"]
   spec.description   = %q{Login with Paymium OAuth2 strategy for OmniAuth 1.0}
   spec.summary       = %q{Login with Paymium OAuth2 strategy for OmniAuth 1.0}
   spec.homepage      = "https://github.com/Pierre-Michard/omniauth-paymium"

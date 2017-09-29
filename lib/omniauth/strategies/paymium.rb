@@ -17,7 +17,7 @@ module OmniAuth
       }
 
       option :authorize_params, {
-        :scope => 'profile postal_code'
+        :scope => 'basic'
       }
 
       def build_access_token
