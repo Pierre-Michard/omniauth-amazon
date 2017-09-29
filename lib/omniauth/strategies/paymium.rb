@@ -40,15 +40,7 @@ module OmniAuth
 
       def raw_info
         access_token.options[:parse] = :json
-
-        # This way is not working right now, do it the longer way
-        # for the time being
-        #
-        #@raw_info ||= access_token.get('/ap/user/profile').parsed
-
-        url = '/api/v1/user'
-        params = {:params => { :access_token => access_token.token}}
-        @raw_info ||= access_token.client.request(:get, url, params).parsed
+        @raw_info ||= access_token.get("#{options.client_options.site}/api/user").parsed
       end
     end
   end
