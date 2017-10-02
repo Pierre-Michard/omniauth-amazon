@@ -30,8 +30,11 @@ module OmniAuth
         client.auth_code.get_token(verifier, token_params)
       end
 
+      uid { raw_info['name'] }
+
       info do
         {
+          'email' => raw_info['email'],
           'name' => raw_info['name']
         }
       end
