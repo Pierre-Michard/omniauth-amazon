@@ -39,10 +39,22 @@ module OmniAuth
         }
       end
 
+      admin_info do
+        {
+            'email' => admin_info['email'],
+            'name' => admin_info['name']
+        }
+      end
+
 
       def raw_info
         access_token.options[:parse] = :json
-        @raw_info ||= access_token.get("#{options.client_options.site}/api/v1/admin").parsed
+        @raw_info ||= access_token.get("#{options.client_options.site}/api/v1/user").parsed
+      end
+
+      def admin_info
+        access_token.options[:parse] = :json
+        @admin_info ||= access_token.get("#{options.client_options.site}/api/v1/admin").parsed
       end
     end
   end
