@@ -17,7 +17,7 @@ module OmniAuth
       }
 
       option :authorize_params, {
-        :scope => 'basic'
+        :scope => 'admin'
       }
 
       def build_access_token
@@ -30,27 +30,15 @@ module OmniAuth
         client.auth_code.get_token(verifier, token_params)
       end
 
-      uid { raw_info['name'] }
+      uid { admin_info['name'] }
 
       info do
         {
-          'email' => raw_info['email'],
-          'name' => raw_info['name']
+          'email' => admin_info['email'],
+          'name' => admin_info['name']
         }
       end
 
-      admin_info do
-        {
-            'email' => admin_info['email'],
-            'name' => admin_info['name']
-        }
-      end
-
-
-      def raw_info
-        access_token.options[:parse] = :json
-        @raw_info ||= access_token.get("#{options.client_options.site}/api/v1/user").parsed
-      end
 
       def admin_info
         access_token.options[:parse] = :json
